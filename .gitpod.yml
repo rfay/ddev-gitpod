@@ -1,6 +1,6 @@
 # image:
 #   file: .gitpod.Dockerfile
-image: drud/ddev-webserver
+image: drud/ddev-webserver-base
 
 tasks:
   - init: composer install
