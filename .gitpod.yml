@@ -1,7 +1,8 @@
 # image:
 #   file: .gitpod.Dockerfile
 # image: drud:ddev-webserver
-image: node:alpine
+# image: node:alpine
+image: drud:ddev-php-base:v0.5.8
 
 tasks:
   - init: composer install
