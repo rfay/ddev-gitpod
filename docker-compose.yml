@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  node:
+    image: "node:14.13.1"
+    container_name: node
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - .:/home/node/app
+    ports:
+      - "3000:3000"
+    tty: true
