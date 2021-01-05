@@ -9,8 +9,6 @@ tasks:
   #     touch /tmp/.ddev-lock
   #     brew tap drud/ddev && brew install ddev
   #     rm /tmp/.ddev-lock
-  - name: docker_up
-    init: sudo docker-up
   - name: ddev_pull
     init: |
       docker pull drud/ddev-dbserver-mariadb-10.2:v1.16.0
@@ -18,6 +16,8 @@ tasks:
       docker pull drud/ddev-ssh-agent:v1.16.0
       docker pull drud/ddev-router:v1.16.2
       docker pull drud/ddev-webserver:v1.16.3
+  - name: docker_up
+    command: sudo docker-up
   - name: ddev_run
     # init: sleep 1 && while [ -f /tmp/.ddev-lock ]; do sleep 1; done
     command: |
