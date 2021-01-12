@@ -1,31 +1,13 @@
 image:
   file: .gitpod.Dockerfile
 
-# Use 'lock file' to delay running ddev until it is installed
-# https://www.gitpod.io/blog/gitpodify/#running-init-scripts
+# First terminal runs `sudo docker-up`, second terminal runs a command with healthcheck, which generates the following error:
+# WARN[2021-01-12T04:45:28.173819507Z] Health check for container a4aa03376287804e45ddad2bf4f7609cb1a113a9fc41ed9a344cebbe5ffc4809 error: OCI runtime exec failed: exec failed: container_linux.go:349: starting container process caused "process_linux.go:101: executing setns process caused \"exit status 1\"": unknown
 tasks:
-  # - name: ddev_install
-  #   init: |
-  #     touch /tmp/.ddev-lock
-  #     brew tap drud/ddev && brew install ddev
-  #     rm /tmp/.ddev-lock
   - name: docker_up
-    init: sudo docker-up
-  - name: ddev_pull
-    init: |
-      sleep 5
-      docker pull drud/ddev-dbserver-mariadb-10.2:v1.16.0
-      docker pull phpmyadmin:5
-      docker pull drud/ddev-ssh-agent:v1.16.0
-      docker pull drud/ddev-router:v1.16.2
-      docker pull drud/ddev-webserver:v1.16.3
-  - name: ddev_run
-    # init: sleep 1 && while [ -f /tmp/.ddev-lock ]; do sleep 1; done
-    command: |
-      sleep 5
-      mkcert -install
-      ddev config global --instrumentation-opt-in=true
-      # ddev start
+    command: sudo docker-up
+  - name: run_command
+    command: docker run -it --rm --health-cmd=ls --health-interval=1s debian:buster-slim bash
 
 github:
   prebuilds:
