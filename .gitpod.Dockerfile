@@ -1,7 +1,7 @@
 FROM gitpod/workspace-full
 
 # Install ddev
-RUN brew tap drud/ddev && brew install ddev
+RUN brew tap drud/ddev && brew install ddev && ddev start
 
 # Install custom tools, runtimes, etc.
 # For example "bastet", a command-line tetris clone:
