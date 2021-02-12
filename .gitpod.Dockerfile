@@ -4,6 +4,7 @@ FROM gitpod/workspace-full
 # RUN brew update
 RUN brew tap drud/ddev && brew install ddev
 
+COPY --chown=gitpod:gitpod ddev-steup.sh .
 RUN ./ddev-setup.sh
 
 # Install custom tools, runtimes, etc.
