@@ -9,26 +9,30 @@ tasks:
   #     touch /tmp/.ddev-lock
   #     brew tap drud/ddev && brew install ddev
   #     rm /tmp/.ddev-lock
-  - init: composer install
-  - name: docker_up
-    command: sudo docker-up
-  - name: ddev_run
+  # - init: composer install
+  # - name: docker_up
+  #   command: sudo docker-up
+  # - name: ddev_run
     # init: sleep 1 && while [ -f /tmp/.ddev-lock ]; do sleep 1; done
-    command: |
-      sleep 5
-      mkcert -install
-      ddev config global --instrumentation-opt-in=true
-      ddev config global --router-bind-all-interfaces=true
-      .ddev/generate-fqdns.sh
-      .ddev/generate-xdebug-host-ip.sh
-      ddev start
+    # command: |
+      # sleep 5
+      # mkcert -install
+      # ddev config global --instrumentation-opt-in=true
+      # ddev config global --router-bind-all-interfaces=true
+      # .ddev/generate-fqdns.sh
+      # .ddev/generate-xdebug-host-ip.sh
+      # ddev start
 
 # Make the following ports public
 ports:
   - port: 8080
   - port: 8025
     onOpen: ignore
+  - port: 8026
+    onOpen: ignore
   - port: 8036
+    onOpen: ignore
+  - port: 8037
     onOpen: ignore
 
 github:
