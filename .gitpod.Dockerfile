@@ -1,7 +1,8 @@
 FROM gitpod/workspace-full
 
 # Install ddev
-RUN brew update && brew tap drud/ddev && brew install ddev
+RUN brew update
+RUN brew tap drud/ddev && brew install ddev
 
 RUN ./ddev-setup.sh
 
