@@ -43,6 +43,6 @@ services:
 COMPOSEEND
 
 # Misc housekeeping before start
-ddev config global --router-bind-all-interfaces
+ddev config global --router-bind-all-interfaces --instrumentation-opt-in
 
 yes | ddev start
